@@ -25,27 +25,35 @@ export function AboutHero() {
       <div className="container flex max-w-5xl flex-col justify-between gap-8 md:gap-20 lg:flex-row lg:items-center lg:gap-24 xl:gap-24">
         <div className="flex-[1.5]">
           <h1 className="text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-            Democratising quality software
+            Democratising quality deals.
           </h1>
 
           <p className="text-muted-foreground mt-5 text-2xl md:text-3xl lg:text-4xl">
-            Mainline is bringing modern software to life with AI magic.
+            Oga & Co. is the conclusive end to transactional drama.
           </p>
 
           <p className="text-muted-foreground mt-8 hidden max-w-lg space-y-6 text-lg text-balance md:block lg:mt-12">
-            At Mainline, we are dedicated to transforming the way teams plan,
-            execute, and deliver projects. Our mission is to provide our
-            customers with an unbeatable edge over delays, inefficiencies, and
-            disorganisation through actionable insights and seamless
-            collaboration. We’ll stop at nothing to give you the tools you need
-            to get every project across the finish line.
+            At Oga & Co., clients should never lose-and if a setback happens
+            "which is always expected 😉", we convert it into a framework to
+            play better the very next minute.
             <br />
             <br />
-            We’re customer-obsessed — investing the time to understand every
-            aspect of your workflow so that we can help you operate better than
-            ever before. We’re all in this together because your success is our
-            success. In our history as a company, we’ve never lost a customer,
-            because when your projects succeed, so do we.
+            We are client-obsessed, dedicated to transforming the way
+            high-stakes decision-makers structure, execute, and close deals,
+            investing every nuance of our time into your unique objectives so
+            that we can help you navigate the market better than ever before.
+            <br />
+            <br />
+            With a mission to provide our clients with an unbeatable edge over
+            delays, friction, and operational chaos through bespoke strategic
+            insights and seamless, discreet execution, we are entirely aligned
+            because your legacy is our benchmark. When your capital succeeds,
+            so do we.
+            <br />
+            <br />
+            This is the leverage you need to cross the finish line - because
+            unless you choose to step away, we stop at nothing to secure your
+            win.
           </p>
         </div>
 

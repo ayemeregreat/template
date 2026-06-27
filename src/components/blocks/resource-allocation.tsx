@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 const topItems = [
   {
-    title: "Reusable issue templates.",
+    title: "Reusable deal templates.",
     description:
-      "Draft lightning-fast documents with our Smart Instructions and Templates.",
+      "We draft lightning‑fast briefings following Instructions to be carried out with Smart Templates.",
     images: [
       {
         src: "/resource-allocation/templates.webp",
@@ -23,7 +23,7 @@ const topItems = [
   },
   {
     title: "Simplify your stack.",
-    description: "No more Confluence, SharePoint, or Microsoft Word.",
+    description: "Not more than 2 things to worry about; missed calls, or endless meetings.",
     images: [
       { src: "/logos/jira.svg", alt: "Jira logo", width: 48, height: 48 },
       { src: "/logos/excel.svg", alt: "Excel logo", width: 48, height: 48 },
@@ -64,7 +64,7 @@ const bottomItems = [
   {
     title: "Graveyard it.",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.",
+      "Stop managing chaos. Don't miss at making it end.",
     images: [
       {
         src: "/resource-allocation/graveyard.webp",
@@ -78,9 +78,9 @@ const bottomItems = [
     fade: ["bottom"],
   },
   {
-    title: "Task discussions.",
+    title: "Deal discussions.",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.",
+      "Confidential, clear, and always moving forward.",
     images: [
       {
         src: "/resource-allocation/discussions.webp",
@@ -96,7 +96,7 @@ const bottomItems = [
   {
     title: "Notifications.",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.",
+      "You'll always know what's moving — and what's not.",
     images: [
       {
         src: "/resource-allocation/notifications.webp",
@@ -119,9 +119,8 @@ export const ResourceAllocation = () => {
     >
       <div className="">
         <h2 className="container text-center text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
-          Mainline your resource allocation and execution
+            Oga & Co. your resource allocation and execution.
         </h2>
-
         <div className="mt-8 md:mt-12 lg:mt-20">
           <DashedLine
             orientation="horizontal"

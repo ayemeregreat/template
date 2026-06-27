@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { Facebook, Linkedin, Twitter } from "lucide-react";
 
-import { ContactForm } from "@/components/blocks/contact-form";
 import { DashedLine } from "@/components/dashed-line";
 
 const contactInfo = [
@@ -85,12 +84,6 @@ export default function Contact() {
         </div>
 
         <DashedLine className="my-12" />
-
-        {/* Inquiry Form */}
-        <div className="mx-auto">
-          <h2 className="mb-4 text-lg font-semibold">Inquiries</h2>
-          <ContactForm />
-        </div>
       </div>
     </section>
   );

@@ -28,10 +28,10 @@ const plans = [
     yearlyPrice: "$6",
     features: [
       "All free plan features and...",
-      "Mainline AI",
+      "Oga AI",
       "Unlimited teams",
       "Unlimited issues and file uploads",
-      "Mainline Insights",
+      "Oga Insights",
       "Admin roles",
     ],
   },
@@ -41,8 +41,8 @@ const plans = [
     yearlyPrice: "$6",
     features: [
       "All free plan features and...",
-      "Mainline AI",
-      "Supermainline AGI",
+      "Oga AI",
+      "Oga AGI",
       "Free daily catered lunch",
       "random HIPPA audits",
     ],
@@ -60,7 +60,7 @@ export const Pricing = ({ className }: { className?: string }) => {
             Pricing
           </h2>
           <p className="text-muted-foreground mx-auto max-w-xl leading-snug text-balance">
-            Use Mainline for free with your whole team. Upgrade to enable
+            Use Oga & Co. for free with your whole team. Upgrade to enable
             unlimited issues, enhanced security controls, and additional
             features.
           </p>

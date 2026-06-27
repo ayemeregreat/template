@@ -1,35 +1,34 @@
-import Image from "next/image";
-
-import {
-  ArrowRight,
-  Blend,
-  ChartNoAxesColumn,
-  CircleDot,
-  Diamond,
-} from "lucide-react";
+import { Blend, ChartNoAxesColumn, CircleDot, Diamond, MessageCircle } from "lucide-react";
 
 import { DashedLine } from "@/components/dashed-line";
 import { Button } from "@/components/ui/button";
+import { EmailSubscription } from "@/components/ui/email-subscription";
+import InteractiveCalendar from "@/components/ui/visualize-booking";
+import { VoicePlayer } from "@/components/ui/voice-player";
 
 const features = [
   {
-    title: "Tailored workflows",
-    description: "Track progress across custom issue flows for your team.",
+    title: "Purpose-built for deal execution.",
+    description:
+      "Built to support the way your team actually moves deals forward.",
     icon: CircleDot,
   },
   {
-    title: "Cross-team projects",
-    description: "Collaborate across teams and departments.",
+    title: "Manage deals end-to-end.",
+    description:
+      "From briefing to close, we keep every moving part in sync.",
     icon: Blend,
   },
   {
-    title: "Milestones",
-    description: "Break projects down into concrete phases.",
+    title: "Build momentum and trusted habits.",
+    description:
+      "Simple routines that keep execution consistent and reliable.",
     icon: Diamond,
   },
   {
-    title: "Progress insights",
-    description: "Track scope, velocity, and progress over time.",
+    title: "Progress insights.",
+    description:
+      "You'll always know what's moving, what's stalled, and what's next - without having to ask.",
     icon: ChartNoAxesColumn,
   },
 ];
@@ -40,35 +39,7 @@ export const Hero = () => {
       <div className="container flex flex-col justify-between gap-8 md:gap-14 lg:flex-row lg:gap-20">
         {/* Left side - Main content */}
         <div className="flex-1">
-          <h1 className="text-foreground max-w-160 text-3xl tracking-tight md:text-4xl lg:text-5xl xl:whitespace-nowrap">
-            Mainline Next.js template
-          </h1>
-
-          <p className="text-muted-foreground text-1xl mt-5 md:text-3xl">
-            Mainline is an open-source website template built with shadcn/ui,
-            Tailwind 4 & Next.js
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-4 lg:flex-nowrap">
-            <Button asChild>
-              <a href="https://github.com/shadcnblocks/mainline-nextjs-template">
-                Get template
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              className="from-background h-auto gap-2 bg-linear-to-r to-transparent shadow-md"
-              asChild
-            >
-              <a
-                href="https://shadcnblocks.com"
-                className="max-w-56 truncate text-start md:max-w-none"
-              >
-                Built by shadcnblocks.com
-                <ArrowRight className="stroke-3" />
-              </a>
-            </Button>
-          </div>
+          <VoicePlayer />
         </div>
 
         {/* Right side - Features */}
@@ -87,7 +58,7 @@ export const Hero = () => {
               <div key={feature.title} className="flex gap-2.5 lg:gap-5">
                 <Icon className="text-foreground mt-1 size-4 shrink-0 lg:size-5" />
                 <div>
-                  <h2 className="font-text text-foreground font-semibold">
+                  <h2 className="text-zinc-100 text-xl font-semibold tracking-tight lg:text-2xl">
                     {feature.title}
                   </h2>
                   <p className="text-muted-foreground max-w-76 text-sm">
@@ -100,15 +71,29 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="mt-12 max-lg:ml-6 max-lg:h-[550px] max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
-        <div className="relative h-[793px] w-full">
-          <Image
-            src="/hero.webp"
-            alt="hero"
-            fill
-            className="rounded-2xl object-cover object-left-top shadow-lg max-lg:rounded-tr-none"
-          />
+      {/* Email Subscription and WhatsApp Section */}
+      <div className="mt-12 md:mt-20 mb-10 md:mb-14">
+        <div className="container flex flex-col items-center justify-center gap-5">
+          <div className="w-full max-w-3xl text-center">
+            <EmailSubscription />
+          </div>
+
+          <Button asChild size="lg" className="w-full max-w-[420px] text-base">
+            <a
+              href="https://wa.me/2348012345678?text=Hi%2C%20Osagie"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md text-base font-medium"
+            >
+              <MessageCircle className="size-5" />
+              WhatsApp
+            </a>
+          </Button>
         </div>
+      </div>
+
+      <div className="mt-12 max-lg:ml-6 max-lg:h-auto max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
+        <InteractiveCalendar />
       </div>
     </section>
   );

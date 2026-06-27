@@ -63,29 +63,23 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mainline - Modern Next.js Template",
-    template: "%s | Mainline",
+    default: "Oga & Co.",
+    template: "%s | Oga & Co.",
   },
   description:
-    "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+    "Oga & Co. is a modern Next.js experience built with shadcn/ui, Tailwind & MDX.",
   keywords: [
     "Next.js",
-    "nextjs template",
-    "nextjs theme",
-    "nextjs starter",
-    "shadcn template",
-    "shadcn theme",
-    "shadcn starter",
-    "tailwind template",
+    "Oga & Co.",
+    "deal execution",
+    "client strategy",
+    "shadcn ui",
     "tailwind theme",
-    "tailwind starter",
-    "mdx template",
-    "mdx theme",
-    "mdx starter",
+    "nextjs starter",
   ],
-  authors: [{ name: "shadcnblocks.com" }],
-  creator: "shadcnblocks.com",
-  publisher: "shadcnblocks.com",
+  authors: [{ name: "Oga & Co." }],
+  creator: "Oga & Co.",
+  publisher: "Oga & Co.",
   robots: {
     index: true,
     follow: true,
@@ -102,24 +96,24 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon/favicon.ico" }],
   },
   openGraph: {
-    title: "Mainline - Modern Next.js Template",
+    title: "Oga & Co.",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
-    siteName: "Mainline",
+      "Oga & Co. is a modern Next.js experience built with shadcn/ui, Tailwind & MDX.",
+    siteName: "Oga & Co.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Mainline - Modern Next.js Template",
+        alt: "Oga & Co.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mainline - Modern Next.js Template",
+    title: "Oga & Co.",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+      "Oga & Co. is a modern Next.js experience built with shadcn/ui, Tailwind & MDX.",
     images: ["/og-image.jpg"],
     creator: "@ausrobdev",
   },

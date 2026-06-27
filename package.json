@@ -1,7 +1,7 @@
 {
-  "name": "mainline-nextjs-template",
+  "name": "oga-co-nextjs-template",
   "version": "1.2.0",
-  "author": "Shadcnblocks.com",
+  "author": "Oga & Co.",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "googleapis": "^148.0.0",
     "lucide-react": "^0.545.0",
     "motion": "^12.23.24",
     "next": "^15.5.5",

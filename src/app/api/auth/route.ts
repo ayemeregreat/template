@@ -1,0 +1,45 @@
+import { NextResponse } from "next/server";
+import { google } from "googleapis";
+import { readFileSync } from "fs";
+import { join } from "path";
+
+export const runtime = "nodejs";
+
+export async function GET() {
+  try {
+    const credentialsPath = join(process.cwd(), "mygoogle.json");
+    const raw = readFileSync(credentialsPath, "utf8");
+    const parsed = JSON.parse(raw) as any;
+
+    const { client_id, client_secret, redirect_uris = [] } = parsed.web ?? {};
+    if (!client_id || !client_secret) {
+      return NextResponse.json(
+        { error: "Invalid mygoogle.json: missing client_id or client_secret" },
+        { status: 500 },
+      );
+    }
+
+    const redirectUri = redirect_uris[0] ?? "urn:ietf:wg:oauth:2.0:oob";
+
+    const oauth2Client = new google.auth.OAuth2(
+      client_id,
+      client_secret,
+      redirectUri,
+    );
+
+    const scopes = ["https://www.googleapis.com/auth/spreadsheets"];
+
+    const url = oauth2Client.generateAuthUrl({
+      access_type: "offline",
+      prompt: "consent",
+      scope: scopes,
+    });
+
+    return NextResponse.json({ url });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 },
+    );
+  }
+}

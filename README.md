@@ -1,12 +1,12 @@
-# Mainline Next.js Template
+# Oga & Co.
 
-Mainline is a free template built with shadcn/ui, Tailwind 4 and Next.js 15.
+Oga & Co. is a free template built with shadcn/ui, Tailwind 4 and Next.js 15.
 
-- [Demo](https://mainline-nextjs-template.vercel.app/)
+- [Demo](https://oga-co-nextjs-template.vercel.app/)
 - [Documentation](https://docs.shadcnblocks.com/templates/getting-started)
-- [Figma](https://www.figma.com/design/cFCLMj7DFv0sK7EVsqKeTa/Mainline?node-id=23250-13201&t=I1nAdchDpknii5Bd-1)
+- [Figma](https://www.figma.com/design/cFCLMj7DFv0sK7EVsqKeTa/Oga-Co?node-id=23250-13201&t=I1nAdchDpknii5Bd-1)
 
-![Mainline NextJS Template screenshot](./public/og-image.jpg)
+![Oga & Co. screenshot](./public/og-image.jpg)
 
 ## Getting Started
 
@@ -52,7 +52,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Pricing page
 - FAQ page
 - Contact page with form
-- Login/Signup pages
 
 ### Blocks
 
@@ -63,7 +62,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Testimonials with carousel
 - Pricing table
 - FAQ with accordion
-- Footer
+- OgaFooter
 - Navigation bar
 
 ## Deployment

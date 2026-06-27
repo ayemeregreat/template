@@ -97,7 +97,7 @@ const comparisonFeatures: FeatureSection[] = [
         enterprise: true,
       },
       {
-        name: "Mainline AI",
+        name: "Oga AI",
         free: null,
         startup: true,
         enterprise: true,

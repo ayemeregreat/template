@@ -13,32 +13,32 @@ const categories = [
     title: "Support",
     questions: [
       {
-        question: "How do I update my account without breaking my laptop?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },
     ],
   },
   {
-    title: "Your account",
+    title: "Delivery",
     questions: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },
@@ -48,12 +48,12 @@ const categories = [
     title: "Other questions",
     questions: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "Will be updated soon",
         answer:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
       },

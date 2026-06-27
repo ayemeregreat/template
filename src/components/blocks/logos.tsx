@@ -88,10 +88,9 @@ export const Logos = () => {
       <div className="container space-y-10 lg:space-y-16">
         <div className="text-center">
           <h2 className="mb-4 text-xl text-balance md:text-2xl lg:text-3xl">
-            Powering the world's best product teams.
-            <br className="max-md:hidden" />
-            <span className="text-muted-foreground">
-              From next-gen startups to established enterprises.
+            Powering Africa's most valuable deals.
+            <span className="block text-muted-foreground">
+              From next‑generation manufacturers to established family offices.
             </span>
           </h2>
         </div>
