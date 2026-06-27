@@ -26,7 +26,7 @@ export async function GET() {
       );
     }
 
-    const redirectUri = redirect_uris[0] ?? "urn:ietf:wg:oauth:2.0:oob";
+    const redirectUri = redirect_uris[0] ?? "http://localhost:3002/api/auth/callback";
 
     const oauth2Client = new google.auth.OAuth2(
       client_id,
