@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { google } from "googleapis";
+
 import { readFileSync } from "fs";
+import { google } from "googleapis";
 import { join } from "path";
+
 
 export const runtime = "nodejs";
 
@@ -9,7 +11,13 @@ export async function GET() {
   try {
     const credentialsPath = join(process.cwd(), "mygoogle.json");
     const raw = readFileSync(credentialsPath, "utf8");
-    const parsed = JSON.parse(raw) as any;
+    const parsed = JSON.parse(raw) as {
+      web?: {
+        client_id?: string;
+        client_secret?: string;
+        redirect_uris?: string[];
+      };
+    };
 
     const { client_id, client_secret, redirect_uris = [] } = parsed.web ?? {};
     if (!client_id || !client_secret) {
