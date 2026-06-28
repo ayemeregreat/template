@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 
 import { google } from "googleapis";
 
-import { getOAuth2Client } from "@/lib/google";
-
 type CalendarEvent = {
   title: string;
   description: string;
@@ -30,7 +28,15 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const calendarId = process.env.GOOGLE_CALENDAR_ID ?? "primary";
-    const auth = getOAuth2Client();
+    const auth = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      process.env.GOOGLE_REDIRECT_URI,
+    );
+
+    auth.setCredentials({
+      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+    });
 
     const calendar = google.calendar({ version: "v3", auth });
     const now = new Date();
@@ -49,7 +55,9 @@ export async function GET() {
     });
 
     const events: CalendarEvent[] = (response.data.items ?? [])
-      .filter((event) => event.status !== "cancelled" && event.start && event.end)
+      .filter(
+        (event) => event.status !== "cancelled" && event.start && event.end,
+      )
       .map((event) => {
         const attendees =
           event.attendees?.map((attendee) => ({
@@ -85,13 +93,9 @@ export async function GET() {
 
     return NextResponse.json(events);
   } catch (error) {
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : "Unable to fetch Google Calendar events.",
-      },
+    console.error("DEBUG BOOKINGS ERROR:", error);
+    return new Response(
+      JSON.stringify({ error: "Failed to fetch bookings", details: error }),
       { status: 500 },
     );
   }
