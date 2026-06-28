@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     if (!email) {
       return NextResponse.json(
-        { error: "Email is required for subscription." },
+        { success: false, message: "Email is required for subscription." },
         { status: 400 },
       );
     }
@@ -27,7 +27,10 @@ export async function POST(request: Request) {
 
     if (!spreadsheetId) {
       return NextResponse.json(
-        { error: "Subscription service is not configured yet." },
+        {
+          success: false,
+          message: "Subscription service is temporarily unavailable.",
+        },
         { status: 503 },
       );
     }
@@ -40,7 +43,8 @@ export async function POST(request: Request) {
       console.error("Google OAuth initialization failed:", authError);
       return NextResponse.json(
         {
-          error:
+          success: false,
+          message:
             "Subscription service is currently unavailable. Google Sheets access is not configured.",
         },
         { status: 503 },
@@ -59,15 +63,14 @@ export async function POST(request: Request) {
       },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, message: "Thank You!" });
   } catch (error) {
     console.error("Subscription route failed:", error);
     return NextResponse.json(
       {
-        error:
-          error instanceof Error
-            ? error.message
-            : "Unable to append subscription to Google Sheet.",
+        success: false,
+        message:
+          "We couldn’t complete your subscription right now. Please try again.",
       },
       { status: 500 },
     );

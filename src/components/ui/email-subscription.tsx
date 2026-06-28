@@ -49,13 +49,27 @@ export const EmailSubscription = () => {
         }),
       });
 
-      const result = await response.json();
+      let result: {
+        success?: boolean;
+        message?: string;
+        error?: string;
+      } | null = null;
 
-      if (!response.ok) {
-        throw new Error(result?.error || "Subscription failed.");
+      try {
+        result = await response.json();
+      } catch {
+        result = null;
       }
 
-      setStatusMessage("Thank You!");
+      if (!response.ok || result?.success === false) {
+        throw new Error(
+          result?.message ||
+            result?.error ||
+            "Subscription failed. Please try again.",
+        );
+      }
+
+      setStatusMessage(result?.message || "Thank You!");
       setStatusType("success");
       setEmail("");
       setName("");
@@ -64,7 +78,9 @@ export const EmailSubscription = () => {
       setIsExpanded(false);
     } catch (error) {
       setStatusMessage(
-        error instanceof Error ? error.message : "Subscription failed.",
+        error instanceof Error
+          ? error.message
+          : "We couldn’t complete your subscription right now. Please try again.",
       );
       setStatusType("error");
     } finally {
