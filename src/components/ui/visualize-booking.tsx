@@ -73,7 +73,6 @@ function formatEventTime(value: string) {
 
 function buildMeetingInfo(event: BookingEvent) {
   const startDate = parseCalendarValue(event.startTime);
-  const endDate = parseCalendarValue(event.endTime);
   const isAllDay = !event.startTime.includes("T");
 
   return {

@@ -115,18 +115,26 @@ export const EmailSubscription = () => {
 
       {isExpanded && (
         <div className="mb-3 grid grid-cols-1 gap-3 md:grid-cols-2">
-          <label className="flex flex-col items-start gap-2 text-left text-sm font-semibold text-zinc-100">
+          <label
+            htmlFor="subscription-name"
+            className="flex flex-col items-start gap-2 text-left text-sm font-semibold text-zinc-100"
+          >
             <span>What's your name?</span>
             <Input
+              id="subscription-name"
               placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </label>
 
-          <label className="flex flex-col items-start gap-2 text-left text-sm font-semibold text-zinc-100">
+          <label
+            htmlFor="subscription-birthdate"
+            className="flex flex-col items-start gap-2 text-left text-sm font-semibold text-zinc-100"
+          >
             <span>What's your birthdate?</span>
             <Input
+              id="subscription-birthdate"
               placeholder="Your birthdate"
               type="date"
               value={birthdate}
@@ -134,9 +142,13 @@ export const EmailSubscription = () => {
             />
           </label>
 
-          <label className="flex flex-col items-start gap-2 text-left text-sm font-semibold text-zinc-100 md:col-span-2">
+          <label
+            htmlFor="subscription-language"
+            className="flex flex-col items-start gap-2 text-left text-sm font-semibold text-zinc-100 md:col-span-2"
+          >
             <span>What's your preferred language?</span>
             <Input
+              id="subscription-language"
               placeholder="e.g., English"
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
