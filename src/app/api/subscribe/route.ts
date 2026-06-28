@@ -11,6 +11,10 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const email = typeof body?.email === "string" ? body.email.trim() : "";
+    const name = typeof body?.name === "string" ? body.name.trim() : "";
+    const dob = typeof body?.dob === "string" ? body.dob.trim() : "";
+    const language =
+      typeof body?.language === "string" ? body.language.trim() : "";
 
     if (!email) {
       return NextResponse.json(
@@ -48,10 +52,10 @@ export async function POST(request: Request) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Sheet1!A:B",
+      range: "Sheet1!A:E",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[email, timestamp]],
+        values: [[email, timestamp, name, dob, language]],
       },
     });
 

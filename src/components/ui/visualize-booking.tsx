@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -83,10 +83,10 @@ function buildMeetingInfo(event: BookingEvent) {
       : `${formatEventTime(event.startTime)} - ${formatEventTime(event.endTime)}`,
     title: event.title,
     participants:
-      event.attendeeNames.length > 0 ? event.attendeeNames : ["No attendee names listed"],
-    location: isAllDay
-      ? "Google Calendar"
-      : `Ends ${formatEventDate(endDate)}`,
+      event.attendeeNames.length > 0
+        ? event.attendeeNames
+        : [event.description || "No description available"],
+    location: event.location || "No location specified",
   };
 }
 
@@ -115,7 +115,7 @@ const Day: React.FC<DayProps> = ({ classNames, day, onHover }) => {
 
         {hasMeetings && (
           <motion.div
-            className="absolute bottom-1 right-1 flex size-5 items-center justify-center rounded-full bg-zinc-700 p-1 text-[10px] font-bold text-white"
+            className="absolute right-1 bottom-1 flex size-5 items-center justify-center rounded-full bg-zinc-700 p-1 text-[10px] font-bold text-white"
             layoutId={`day-${day.id}-meeting-count`}
             style={{
               borderRadius: 999,
@@ -152,7 +152,12 @@ const CalendarGrid: React.FC<{
   return (
     <div className="grid grid-cols-7 gap-2">
       {days.map((day) => (
-        <Day classNames={day.classNames} day={day} key={day.id} onHover={onHover} />
+        <Day
+          classNames={day.classNames}
+          day={day}
+          key={day.id}
+          onHover={onHover}
+        />
       ))}
     </div>
   );
@@ -162,7 +167,7 @@ const InteractiveCalendar = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<typeof motion.div>
 >(({ className, ...props }, ref) => {
-  const [moreView, setMoreView] = useState(false);
+  const [moreView, setMoreView] = useState(true);
   const [hoveredDay, setHoveredDay] = useState<string | null>(null);
   const [events, setEvents] = useState<BookingEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -241,13 +246,16 @@ const InteractiveCalendar = React.forwardRef<
         transition={{ duration: 0.35 }}
       >
         <motion.div layout className="w-full max-w-lg">
-          <motion.div key="calendar-view" className="flex w-full flex-col gap-4">
+          <motion.div
+            key="calendar-view"
+            className="flex w-full flex-col gap-4"
+          >
             <div className="flex w-full items-center justify-between">
-              <motion.h2 className="mb-2 text-4xl font-bold tracking-wider text-zinc-300">
+              <motion.h2 className="mb-2 text-4xl font-bold tracking-wider text-black dark:text-white">
                 {new Intl.DateTimeFormat(undefined, {
                   month: "long",
                 }).format(viewDate)}{" "}
-                <span className="opacity-50">
+                <span className="text-black/80 dark:text-white/80">
                   {new Intl.DateTimeFormat(undefined, {
                     year: "numeric",
                   }).format(viewDate)}
@@ -262,7 +270,7 @@ const InteractiveCalendar = React.forwardRef<
                 <Columns3 className="z-[2]" />
                 <Grid className="z-[2]" />
                 <div
-                  className="absolute left-0 top-0 h-[85%] w-7 rounded-md bg-white transition-transform duration-300"
+                  className="absolute top-0 left-0 h-[85%] w-7 rounded-md bg-white transition-transform duration-300"
                   style={{
                     top: "50%",
                     transform: moreView
@@ -302,18 +310,21 @@ const InteractiveCalendar = React.forwardRef<
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <motion.div key="more-view" className="mt-4 flex w-full flex-col gap-4">
+            <motion.div
+              key="more-view"
+              className="mt-4 flex w-full flex-col gap-4"
+            >
               <div className="flex w-full flex-col items-start justify-between">
-                <motion.h2 className="mb-2 text-4xl font-bold tracking-wider text-zinc-300">
+                <motion.h2 className="mb-2 text-4xl font-bold tracking-wider text-black dark:text-white">
                   Bookings
                 </motion.h2>
-                <p className="font-medium text-zinc-300/50">
-                  See upcoming and past events booked through your event type links.
+                <p className="font-medium text-black/80 dark:text-white/80">
+                  See what we have scheduled for this month.
                 </p>
               </div>
 
               <motion.div
-                className="flex h-[620px] flex-col items-start justify-start overflow-hidden overflow-y-scroll rounded-xl border-2 border-[#323232] shadow-md"
+                className="flex h-[520px] flex-col items-start justify-start overflow-y-auto border-none bg-transparent shadow-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 layout
               >
                 <AnimatePresence>
@@ -328,16 +339,12 @@ const InteractiveCalendar = React.forwardRef<
                     sortedDays
                       .filter((day) => day.meetingInfo)
                       .map((day) => (
-                        <motion.div
-                          key={day.id}
-                          className="w-full border-b-2 border-[#323232] py-0 last:border-b-0"
-                          layout
-                        >
+                        <motion.div key={day.id} className="w-full py-0" layout>
                           {day.meetingInfo &&
                             day.meetingInfo.map((meeting, mIndex) => (
                               <motion.div
                                 key={mIndex}
-                                className="border-b border-[#323232] p-3 last:border-b-0"
+                                className="p-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
@@ -347,16 +354,20 @@ const InteractiveCalendar = React.forwardRef<
                                 }}
                               >
                                 <div className="mb-2 flex items-center justify-between">
-                                  <span className="text-sm text-white">{meeting.date}</span>
-                                  <span className="text-sm text-white">{meeting.time}</span>
+                                  <span className="text-sm font-medium text-black/85 dark:text-white/85">
+                                    {meeting.date}
+                                  </span>
+                                  <span className="text-sm font-medium text-black/85 dark:text-white/85">
+                                    {meeting.time}
+                                  </span>
                                 </div>
-                                <h3 className="mb-1 text-lg font-semibold text-white">
+                                <h3 className="mb-1 text-lg font-semibold text-black dark:text-white">
                                   {meeting.title}
                                 </h3>
-                                <p className="mb-1 text-sm text-zinc-600">
+                                <p className="mb-1 text-sm text-black/75 dark:text-white/75">
                                   {meeting.participants.join(", ")}
                                 </p>
-                                <div className="flex items-center text-blue-500">
+                                <div className="flex items-center text-black/75 dark:text-white/75">
                                   <svg
                                     className="mr-1 h-4 w-4"
                                     fill="none"
@@ -371,7 +382,9 @@ const InteractiveCalendar = React.forwardRef<
                                       d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
                                     />
                                   </svg>
-                                  <span className="text-sm">{meeting.location}</span>
+                                  <span className="text-sm text-black/75 dark:text-white/75">
+                                    {meeting.location}
+                                  </span>
                                 </div>
                               </motion.div>
                             ))}
@@ -379,8 +392,9 @@ const InteractiveCalendar = React.forwardRef<
                       ))}
 
                   {!loading && !error && events.length === 0 && (
-                    <div className="w-full p-4 text-sm text-zinc-300/60">
-                      No upcoming events were returned from the connected calendar.
+                    <div className="w-full p-4 text-sm text-black/75 dark:text-white/75">
+                      No upcoming events were returned from the connected
+                      calendar.
                     </div>
                   )}
                 </AnimatePresence>
@@ -439,8 +453,13 @@ function buildDays(viewDate: Date, events: BookingEvent[]) {
   }
 
   while (days.length < targetTileCount) {
-    const nextMonthStart = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
-    const index = days.length - Math.max(0, monthEnd.getDate() - today.getDate() + 1);
+    const nextMonthStart = new Date(
+      viewDate.getFullYear(),
+      viewDate.getMonth() + 1,
+      1,
+    );
+    const index =
+      days.length - Math.max(0, monthEnd.getDate() - today.getDate() + 1);
     const date = new Date(nextMonthStart);
     date.setDate(nextMonthStart.getDate() + index);
 
